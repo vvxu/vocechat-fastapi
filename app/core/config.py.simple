@@ -1,0 +1,97 @@
+import os
+
+# api配置
+# 主机
+api_app_host = os.environ.get('API_APP_HOST')
+# 名称
+api_app_name = os.environ.get('API_APP_NAME')
+# 端口
+api_app_port = os.environ.get('API_APP_PORT')
+# 加密
+api_user_secret_key = os.environ.get('API_USER_SECRET_KEY')
+# 登陆存活时间
+api_token_minutes = os.environ.get('API_TOKEN_MINUTES')
+# api_token_url = os.environ.get('API_TOKEN_URL')
+
+# 外部token
+# 验证码存活时间
+other_token_minutes = os.environ.get('OTHER_TOKEN_MINUTES')
+
+# 微信
+# 微信公众号密钥
+wechat_oa_token = os.environ.get('WECHAT_OA_TOKEN')
+
+# openai的apikey
+openai_key = os.environ.get('OPENAI_KEY')
+
+# mongo
+# mongo_uri = os.environ.get('MONGO_URI')
+
+# voce_chat
+voce_url = os.environ.get('VOCE_URL')
+
+# Postgres
+postgres_dbname = os.environ.get('POSTGRES_DBNAME')
+postgres_user = os.environ.get('POSTGRES_USER')
+postgres_password = os.environ.get('POSTGRES_PASSWORD')
+postgres_host = os.environ.get('POSTGRES_HOST')
+postgres_port = os.environ.get('POSTGRES_PORT')
+
+# 前端Admin的数据
+admin_username = os.environ.get('ADMIN_USERNAME')
+admin_password = os.environ.get('ADMIN_PASSWORD')
+
+
+class Settings:
+    Api = {
+        "HOST": api_app_host,
+        "APP_NAME": api_app_name,
+        "PORT": api_app_port,
+        "RELOAD": True,
+        # "token_url": api_token_url,
+        "secret_key": api_user_secret_key,
+        "access_token_expire_minutes": api_token_minutes,
+        "algorithm": "HS256",
+    }
+    TokenData = {
+        "chatgpt_expire_minutes": other_token_minutes
+    }
+    WechatOA = {
+        "token": wechat_oa_token
+    }
+    Openai = {
+        "secret": openai_key,
+        "model": "gpt-3.5-turbo",
+    }
+    VoceChat = {
+        "url": voce_url,
+        "bot_config": {
+            "bot1": {
+                "bot_id": "",
+                "secret": ""
+            },
+            "bot2": {
+                "bot_id": "",
+                "secret": ""
+            },
+            "bot3": {
+                "bot_id": "",
+                "secret": ""
+            },
+        },
+    }
+    Postgres = {
+        "dbname": postgres_dbname,
+        "user": postgres_user,
+        "password": postgres_password,
+        "host": postgres_host,
+        "port": postgres_port
+    }
+    Admin = {
+        "username": admin_username,
+        "password": admin_password,
+    }
+
+
+if __name__ == "__main__":
+    print (Settings.VoceChat['bot_config']["bot1"]["sent_to"])
