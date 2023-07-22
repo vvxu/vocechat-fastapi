@@ -283,7 +283,7 @@ class MessageHandler:
             user_current_chat_mode = user_info["model"]
             return user_current_chat_mode
         except:
-            return "1"
+            return "0"
         
 
     # 获取当前用户的ai system角色设置
